@@ -21,11 +21,13 @@ export default function NavBar() {
   };
 
   const background = currentScrollPos > 0 ? "black" : "transparent";
-  const shadow= currentScrollPos > 0 ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "";
+  const shadow = currentScrollPos > 0 ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "";
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full h-24 lg:h-28 transition-transform duration-700 ${scrollingDown ? "-translate-y-full" : "translate-y-0"}`}
+      className={`fixed top-0 left-0 w-full h-24 lg:h-28 transition-transform duration-700 ${
+        scrollingDown ? "-translate-y-full" : "translate-y-0"
+      }`}
       style={{
         backgroundColor: background,
         transition: "transform 0.5s ease-out, background-color 0.5s ease-out",
@@ -35,23 +37,37 @@ export default function NavBar() {
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <Link href="/">
           <div className="relative w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
-            <Image src={Logo} alt="logo" layout="fill" objectFit="contain" priority />
+            <Image
+              src={Logo}
+              alt="logo"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
           </div>
         </Link>
         <div className="hidden sm:flex items-center">
           <ul className="flex items-center">
             <Link href="/services">
-              <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">Services</li>
+              <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">
+                Services
+              </li>
             </Link>
             <Link href="/contact">
-              <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">Contact</li>
+              <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">
+                Contact
+              </li>
             </Link>
             <Link href="/about">
-              <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">About</li>
+              <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">
+                About
+              </li>
             </Link>
             <li className="ml-10">
               <a href="tel:+1234567890">
-                <button className="bg-red-700 text-white lg:text-xl py-2 px-4 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110">Call Us</button>
+                <button className="bg-red-700 text-white lg:text-xl py-2 px-4 rounded-full transition-transform duration-300 ease-in-out transform hover:scale-110">
+                  Call Us
+                </button>
               </a>
             </li>
           </ul>
@@ -61,17 +77,22 @@ export default function NavBar() {
         </div>
       </div>
       <div
-        className={`fixed top-0 right-0 w-[100%] sm:hidden h-screen bg-[#080808] p-10 transition-opacity ease-in duration-500 ${menuOpen ? "opacity-100 visible z-50" : "opacity-0 invisible -z-50"}`}
+        className={`fixed top-0 right-0 w-[100%] sm:hidden h-screen bg-[#080808] p-10 transition-opacity ease-in duration-500 ${
+          menuOpen ? "opacity-100 visible z-50" : "opacity-0 invisible -z-50"
+        }`}
         style={{
           position: "fixed",
           transition: "opacity 0.5s ease-out, visibility 0.5s ease-out",
         }}
       >
-
-
-
         <div className="absolute top-0 left-4 -mt-6 w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
-          <Image src={Logo} alt="logo" layout="fill" objectFit="contain" priority />
+          <Image
+            src={Logo}
+            alt="logo"
+            layout="fill"
+            objectFit="contain"
+            priority
+          />
         </div>
         <div className="flex w-full items-center justify-end ml-7 -mt-2 transition-opacity">
           <div onClick={handleNav} className="cursor-pointer">
@@ -81,19 +102,36 @@ export default function NavBar() {
         <div className="flex-col py-4 mt-20">
           <ul className="w-full">
             <Link href="/services">
-              <li onClick={() => setMenuOpen(false)} className="py-5 cursor-pointer text-white text-xl border-b border-white">Services</li>
+              <li
+                onClick={() => setMenuOpen(false)}
+                className="py-5 cursor-pointer text-white text-xl border-b border-white"
+              >
+                Services
+              </li>
             </Link>
             <Link href="/about">
-              <li onClick={() => setMenuOpen(false)} className="py-5 cursor-pointer text-white text-xl border-b border-white">About</li>
+              <li
+                onClick={() => setMenuOpen(false)}
+                className="py-5 cursor-pointer text-white text-xl border-b border-white"
+              >
+                About
+              </li>
             </Link>
             <Link href="/contact">
-              <li onClick={() => setMenuOpen(false)} className="py-5 cursor-pointer text-white text-xl border-b border-white">Contact</li>
+              <li
+                onClick={() => setMenuOpen(false)}
+                className="py-5 cursor-pointer text-white text-xl border-b border-white"
+              >
+                Contact
+              </li>
             </Link>
           </ul>
         </div>
-        <div className="bottom-0 left-0 right-0 flex justify-center items-center p-4 text-nowrap">
-          <a href="tel:+1234567890">
-            <button className="bg-red-700 text-white text-2xl py-2 px-28 w-full rounded-full transition-colors duration-150 ease-in-out active:bg-blue-300">Call us</button>
+        <div className="bottom-0 left-0 right-0 flex items-center text-nowrap w-full">
+          <a href="tel:+1234567890" className="w-full">
+            <button className="bg-red-700 text-white text-2xl w-full rounded-full transition-colors duration-150 ease-in-out active:bg-blue-300">
+              Call us
+            </button>
           </a>
         </div>
         <div className="flex items-center space-x-4 justify-center mt-4">
