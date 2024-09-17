@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* styles.css */
+.navbar {
+  transition: background-color 0.5s ease;
+}
+
+.navbar-bg-transparent {
+  background-color: transparent;
+}
+
+.navbar-bg-colored {
+  background-color: white; /* or your desired color */
+}
