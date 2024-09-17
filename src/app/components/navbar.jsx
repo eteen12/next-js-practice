@@ -10,16 +10,22 @@ import {
   AiOutlineTwitter,
 } from "react-icons/ai";
 import { useState } from "react";
+import { useScrollEffect } from "/hooks/useScrollEffect";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const scrollingDown = useScrollEffect();
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
-    <nav className="w-full h-28 lg:h-32 ">
+    <nav
+      className={`fixed top-0 left-0 w-full h-28 lg:h-32 transition-transform duration-300 ${
+        scrollingDown ? "-translate-y-full" : "translate-y-0"
+      }`}
+    >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
         <Link href="/">
           <div className="relative w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
@@ -66,7 +72,10 @@ export default function NavBar() {
         className={`fixed top-0 right-0 w-[100%] sm:hidden h-screen bg-[#080808] p-10 transition-opacity ease-in duration-500 ${
           menuOpen ? "opacity-100 visible z-50" : "opacity-0 invisible -z-50"
         }`}
-        style={{ position: "fixed", transition: "opacity 0.5s ease-out, visibility 0.5s ease-out",}}
+        style={{
+          position: "fixed",
+          transition: "opacity 0.5s ease-out, visibility 0.5s ease-out",
+        }}
       >
         <div className="flex w-full items-center justify-end ml-7 -mt-2 transition-opacity ">
           <div onClick={handleNav} className="cursor-pointer">
@@ -106,7 +115,7 @@ export default function NavBar() {
           <AiOutlineFacebook size={50} className="cursor-pointer text-white" />
           <AiOutlineTwitter size={50} className="cursor-pointer text-white" />
         </div>
-        <div className="fixed bottom-0 left-0 right-0 flex justify-center mb-4">
+        <div className="bottom-0 left-0 right-0 flex justify-center items-center p-4">
           <a href="tel:+1234567890">
             <button className="bg-red-700 text-white text-2xl py-2 px-36 rounded-full transition-colors duration-150 ease-in-out active:bg-blue-300">
               Call us
