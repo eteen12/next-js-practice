@@ -3,25 +3,33 @@ import { useState, useEffect } from "react";
 export function useScrollEffect() {
   const [scrollingDown, setScrollingDown] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0); //loads 0 when is at the top of the page
-  const [currentScrollPos, setCurrentScrollPos] = useState(0);
+  const [background, setBackground] = useState("transparent");
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY; //this gets the current scroll position from the top of the page
+      const newScrollPos = window.scrollY;
 
-      if(currentScrollPos <=0 ){//Ignores scroll events if at the top of the page
+      if (newScrollPos <= 0) {
+        //Ignores scroll events if at the top of the page
         setScrollingDown(false);
-        setPrevScrollPos(currentScrollPos);
+        setPrevScrollPos(newScrollPos);
+        setBackground("transparent");
         return;
       }
-      setCurrentScrollPos(currentScrollPos);
 
-      setScrollingDown(currentScrollPos > prevScrollPos); // it will set scrollingDown useState to (true), if current scroll is greater than previous, meaning that the nav bar will disapear
-      setPrevScrollPos(currentScrollPos); // sets the prevScrollPos to the current one, so that the above function can work
+      
+      setScrollingDown(newScrollPos > prevScrollPos); // it will set scrollingDown useState to (true), if current scroll is greater than previous, meaning that the nav bar will disapear
+      setPrevScrollPos(newScrollPos); // sets the prevScrollPos to the current one, so that the above function can work
+
+      if (newScrollPos > 2) {
+        setBackground("black");
+      } else {
+        setBackground("transparent");
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll); //stops listening to avoid memory leaks
   }, [prevScrollPos]); //by using a dependancy array the effect only re-runs when one of the dependencies change, without it it might use outdated values of prevScrollPos
 
-  return { scrollingDown, currentScrollPos };
+  return { scrollingDown,background };
 }

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "/public/logo.png";
+import LogoRed from "/public/logoRed.png";
 import {
   AiOutlineMenu,
   AiOutlineClose,
@@ -14,14 +15,14 @@ import { useScrollEffect } from "/hooks/useScrollEffect";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { scrollingDown, currentScrollPos } = useScrollEffect();
+  const { scrollingDown, background } = useScrollEffect();
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const background = currentScrollPos > 0 ? "black" : "transparent";
-  const shadow = currentScrollPos > 0 ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "";
+  // const background = currentScrollPos > 2 ? "black" : "transparent";
+  // const shadow = currentScrollPos > 2 ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "";
 
   return (
     <nav
@@ -31,7 +32,7 @@ export default function NavBar() {
       style={{
         backgroundColor: background,
         transition: "transform 0.5s ease-out, background-color 0.5s ease-out",
-        boxShadow: shadow,
+        // boxShadow: shadow,
       }}
     >
       <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
@@ -87,7 +88,7 @@ export default function NavBar() {
       >
         <div className="absolute top-0 left-4 -mt-6 w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
           <Image
-            src={Logo}
+            src={LogoRed}
             alt="logo"
             layout="fill"
             objectFit="contain"
