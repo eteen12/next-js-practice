@@ -1,6 +1,7 @@
 import NavBar from "./components/navbar";
 import Image from "next/image";
 import BackgroundImage from "/public/background.jpg";
+import MobileBackgroundImage from "/public/backgroundMobile.jpg";
 import "/src/app/globals.css";
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
       <div className="relative z-50">
         <NavBar />
       </div>
-      <div className="homeImage">
+      <div className="hidden sm:block">
         <Image
           src={BackgroundImage}
           className="object-cover brightness-75 z-10"
@@ -18,10 +19,21 @@ export default function Home() {
           priority
         />
       </div>
+      <div className="block sm:hidden">
+        <Image
+          src={MobileBackgroundImage}
+          className="object-cover brightness-75 z-10"
+          fill
+          alt="Mobile Background Image"
+          priority
+        />
+      </div>
       {/* Main Content */}
       <div className="relative z-30 flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-4xl text-white">Welcome to Our Website</h1>
-        <p className="text-lg text-white">Scroll down to see more content.</p>
+        <h1 className="text-4xl text-white text-wrap text-center">
+          Plumbing Services in Kelowna
+        </h1>
+        <p className="text-lg text-white">Est 2020</p>
       </div>
 
       {/* Content to enable scrolling */}
