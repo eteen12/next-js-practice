@@ -1,6 +1,7 @@
 import NavBar from "./components/navbar";
 import Image from "next/image";
 import BackgroundImage from "/public/background.jpg";
+import "/src/app/globals.css";
 
 export default function Home() {
   return (
@@ -8,14 +9,15 @@ export default function Home() {
       <div className="relative z-50">
         <NavBar />
       </div>
-      <Image
-        src={BackgroundImage}
-        className="object-cover brightness-75"
-        fill
-        alt="Background Image "
-        style={{ zIndex: 10 }}
-        priority
-      />
+      <div className="homeImage">
+        <Image
+          src={BackgroundImage}
+          className="object-cover brightness-75 z-10"
+          fill
+          alt="Background Image "
+          priority
+        />
+      </div>
       {/* Main Content */}
       <div className="relative z-30 flex flex-col items-center justify-center min-h-screen">
         <h1 className="text-4xl text-white">Welcome to Our Website</h1>

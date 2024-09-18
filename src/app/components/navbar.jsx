@@ -1,4 +1,7 @@
 "use client";
+import { useState } from "react";
+import { useScrollEffect } from "/hooks/useScrollEffect";
+import "/src/app/globals.css";
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "/public/logo.png";
@@ -10,8 +13,6 @@ import {
   AiOutlineFacebook,
   AiOutlineTwitter,
 } from "react-icons/ai";
-import { useState } from "react";
-import { useScrollEffect } from "/hooks/useScrollEffect";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,9 +21,6 @@ export default function NavBar() {
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   };
-
-  // const background = currentScrollPos > 2 ? "black" : "transparent";
-  // const shadow = currentScrollPos > 2 ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "";
 
   return (
     <nav
@@ -86,7 +84,8 @@ export default function NavBar() {
           transition: "opacity 0.5s ease-out, visibility 0.5s ease-out",
         }}
       >
-        <div className="absolute top-0 left-4 -mt-6 w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
+        {/** !!!!!!!!!! MOBILE DESIGN !!!!!!!!!!!! */}
+        <div className="absolute top-0 left-4 -mt-8 w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
           <Image
             src={LogoRed}
             alt="logo"
@@ -95,12 +94,12 @@ export default function NavBar() {
             priority
           />
         </div>
-        <div className="flex w-full items-center justify-end ml-7 -mt-2 transition-opacity">
+        <div className="flex w-full items-center justify-end closeBtn transition-opacity">
           <div onClick={handleNav} className="cursor-pointer">
-            <AiOutlineClose size={30} className="text-white" />
+            <AiOutlineClose size={29} className="text-white" />
           </div>
         </div>
-        <div className="flex-col py-4 mt-20">
+        <div className="flex-col mt-20">
           <ul className="w-full">
             <Link href="/services">
               <li
@@ -128,17 +127,19 @@ export default function NavBar() {
             </Link>
           </ul>
         </div>
-        <div className="bottom-0 left-0 right-0 flex items-center text-nowrap w-full">
-          <a href="tel:+1234567890" className="w-full">
-            <button className="bg-red-700 text-white text-2xl w-full rounded-full transition-colors duration-150 ease-in-out active:bg-blue-300">
-              Call us
-            </button>
-          </a>
-        </div>
-        <div className="flex items-center space-x-4 justify-center mt-4">
-          <AiOutlineInstagram size={40} className="cursor-pointer text-white" />
-          <AiOutlineFacebook size={40} className="cursor-pointer text-white" />
-          <AiOutlineTwitter size={40} className="cursor-pointer text-white" />
+        <div className="py-10">
+          <div className="bottom-0 left-0 right-0 flex items-center text-nowrap w-full">
+            <a href="tel:+1234567890" className="w-full">
+              <button className="bg-red-700 text-white text-2xl w-full rounded-full button">
+                Call us
+              </button>
+            </a>
+          </div>
+          <div className="flex items-center space-x-4 justify-center mt-4">
+            <AiOutlineInstagram size={40} className="cursor-pointer text-white" />
+            <AiOutlineFacebook size={40} className="cursor-pointer text-white" />
+            <AiOutlineTwitter size={40} className="cursor-pointer text-white" />
+          </div>
         </div>
       </div>
     </nav>
