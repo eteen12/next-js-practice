@@ -33,9 +33,9 @@ export default function NavBar() {
         // boxShadow: shadow,
       }}
     >
-      <div className="flex justify-between items-center h-full w-full px-4 2xl:px-16">
+      <div className="flex justify-between items-center h-full w-full xl:px-4 2xl:px-16">
         <Link href="/">
-          <div className="relative w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
+          <div className="relative w-40 h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
             <Image
               src={Logo}
               alt="logo"
@@ -45,7 +45,7 @@ export default function NavBar() {
             />
           </div>
         </Link>
-        <div className="hidden sm:flex items-center">
+        <div className="hidden sm:flex items-center px-2">
           <ul className="flex items-center">
             <Link href="/services">
               <li className="ml-10 hover:border-b text-xl text-white lg:text-2xl">
@@ -71,7 +71,7 @@ export default function NavBar() {
             </li>
           </ul>
         </div>
-        <div onClick={handleNav} className="sm:hidden cursor-pointer pl-24">
+        <div onClick={handleNav} className="sm:hidden cursor-pointer pl-24 px-3">
           <AiOutlineMenu size={25} className="text-white" />
         </div>
       </div>
