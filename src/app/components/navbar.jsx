@@ -76,7 +76,7 @@ export default function NavBar() {
         </div>
       </div>
       <div
-        className={`fixed top-0 right-0 w-[100%] sm:hidden h-screen bg-[#080808] p-10 transition-opacity ease-in duration-500 ${
+        className={`fixed top-0 right-0 w-[100%] sm:hidden h-screen bg-[#080808] p-9 transition-opacity ease-in duration-500 ${
           menuOpen ? "opacity-100 visible z-50" : "opacity-0 invisible -z-50"
         }`}
         style={{
@@ -85,7 +85,7 @@ export default function NavBar() {
         }}
       >
         {/** !!!!!!!!!! MOBILE DESIGN !!!!!!!!!!!! */}
-        <div className="absolute top-0 left-4 -mt-8 w-40 h-40 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-72 lg:h-64">
+        <div className="absolute top-0 left-0 -mt-8 w-40 h-40">
           <Image
             src={LogoRed}
             alt="logo"
@@ -96,7 +96,7 @@ export default function NavBar() {
         </div>
         <div className="flex w-full items-center justify-end closeBtn transition-opacity">
           <div onClick={handleNav} className="cursor-pointer">
-            <AiOutlineClose size={29} className="text-white" />
+            <AiOutlineClose size={29} className="text-white mt-1 close" />
           </div>
         </div>
         <div className="flex-col mt-20">
